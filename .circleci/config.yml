@@ -1,6 +1,6 @@
 version: 2.0
 jobs:
-  build:
+  test:
     docker:
       - image: circleci/python:2.7 
     steps:
@@ -12,3 +12,17 @@ jobs:
             python tests.py  
             echo 'Hello World!'
             echo 'This is the delivery pipeline'
+  dockerize:
+    machine: true
+    steps:
+      - checkout
+     # Login to docker
+      - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
+
+     # build the application image
+      - run: docker build -t $DOCKER_USER/runleopard:$CIRCLE_SHA1 .
+
+     # deploy the image
+      - run: docker push $DOCKER_USER/runleopard:$CIRCLE_SHA1
+
+
