@@ -7,7 +7,7 @@ RUN apt-get install -y python-pip python-dev build-essential
 
 #install python modules needed by python app
 COPY requirements.txt /usr/src/app/
-RUN ip install --no-cache-dir -r /usr/src/app/requirements.txt
+RUN pip install --no-cache-dir -r /usr/src/app/requirements.txt
 
 
 
