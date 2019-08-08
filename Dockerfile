@@ -1,21 +1,18 @@
 # base image
-FROM ubuntu:latest
+FROM circleci/python:2.7
 
-#install pythin and pip
-RUN apt-get update -y
-RUN apt-get install -y python-pip python-dev build-essential
 
 #install python modules needed by python app
 COPY requirements.txt /usr/src/app/
-RUN pip install --no-cache-dir -r /usr/src/app/requirements.txt
+RUN pip install --user --no-cache-dir -r /usr/src/app/requirements.txt
 
-
+RUN python --version
 
 #copy files required for the app to run
 COPY . /usr/src/app/
 
 # declare the port number the container should expose
-EXPOSE 6000
+EXPOSE 5000
 
 
 # Run the application
