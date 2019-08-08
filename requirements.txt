@@ -2,3 +2,4 @@ pip
 requests
 Flask-SQLAlchemy
 flask-wtf
+
