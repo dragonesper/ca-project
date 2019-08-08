@@ -16,7 +16,7 @@ jobs:
     machine: true
     steps:
       - checkout
-     # Login to docker
+     # Login to docker 2
       - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
 
      # build the application image
