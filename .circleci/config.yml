@@ -26,3 +26,12 @@ jobs:
       - run: docker push $DOCKER_USER/runleopard:$CIRCLE_SHA1
 
 
+workflows:
+  version: 2
+  two_job_flow:
+    jobs:
+      - dockerize
+      - build:
+          requires:
+            - dockerize
+
